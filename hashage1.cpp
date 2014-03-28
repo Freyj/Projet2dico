@@ -70,20 +70,31 @@ void Hashage<Valeur>::supprimerMot(String rarity){
 //vérifie si le dictionnaire contient le mot
 template <typename Valeur>
 bool Hashage<Valeur>::contientMot(String mot){
-    bool res;
+    if (taille!=0){
 
-    return res;
+    }
+    else return false;
 }
 
 //////////////////////////////////////////////////////////////////////
-//associe une valeur au mot
+//associe une valeur au mot qui peut être soit présent, soit absent du
+//dictionnaire
 template <typename Valeur>
 void Hashage<Valeur>::associerMot(String mot, Valeur v){
+    //si le mot est présent, on change la valeur associée (unicité)
+    if (contientMot(mot)){
+
+    }
+    //si le mot est absent, on l'ajoute au dictionnaire
+    else {
+        ajouterMot(String mot, Valeur v)
+    }
 
 }
 
 //////////////////////////////////////////////////////////////////////
 //renvoie la valeur associée au mot demandé
+//PRE : le mot existe dans le dictionnaire
 template <typename Valeur>
  Valeur Hashage<Valeur>::valeurAssociée(String mot){
 
