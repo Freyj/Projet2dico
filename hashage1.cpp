@@ -3,7 +3,7 @@ using namespace std;
 //////////////////////////////////////////////////////////////////////
 //Constructeur
 template <typename Valeur>
-Hashage<T>::Hashage(){
+Hashage<Valeur>::Hashage(){
     taille = 0;
     table[29] = {0};
 }
@@ -12,7 +12,6 @@ Hashage<T>::Hashage(){
 //destructeur
 template <typename Valeur>
 Hashage<Valeur>::~Hashage(){
-
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -66,6 +65,30 @@ void Hashage<Valeur>::supprimerMot(String rarity){
         taille--;
     }
 }
+
+//////////////////////////////////////////////////////////////////////
+//vérifie si le dictionnaire contient le mot
+template <typename Valeur>
+bool Hashage<Valeur>::contientMot(String mot){
+    bool res;
+
+    return res;
+}
+
+//////////////////////////////////////////////////////////////////////
+//associe une valeur au mot
+template <typename Valeur>
+void Hashage<Valeur>::associerMot(String mot, Valeur v){
+
+}
+
+//////////////////////////////////////////////////////////////////////
+//renvoie la valeur associée au mot demandé
+template <typename Valeur>
+ Valeur Hashage<Valeur>::valeurAssociée(String mot){
+
+ }
+
 //////////////////////////////////////////////////////////////////////
 //fonction de hashage qui ignore les 3 premières lettres du mot et les
 // 2 dernières, et fait une addition des codes ascii des 3 lettres du 
