@@ -1,21 +1,21 @@
 using namespace std;
 
-//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //Constructeur
-template <typename valeur>
-MultiPass<T>::MultiPass(){
+template <typename Valeur>
+Hashage<T>::Hashage(){
     taille = 0;
     table[29] = {0};
 }
 
-/////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //destructeur
-template <typename valeur>
-MultiPass<T>::~MultiPass(){
+template <typename Valeur>
+Hashage<Valeur>::~Hashage(){
 
 }
 
-//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //ajoute un mot au dictionnaire
 template <typename Valeur>
 void Hashage<Valeur>::ajouterMot(String rainbowdash, Valeur v){
@@ -24,28 +24,28 @@ void Hashage<Valeur>::ajouterMot(String rainbowdash, Valeur v){
     //si la liste est vide, on crée un maillon qu'on associe à tete
     if (estVide()){
         res->suiv = NULL;
-        table[hachage(rainbowDash)] = res;
+        table[hashage(rainbowDash)] = res;
     }else{
     //si la liste n'est pas vide, on ajoute en tête
-        maillon* temp = table[hachage(rainbowDash)];
+        maillon* temp = table[hashage(rainbowDash)];
         res->suiv = temp;
-        table[hachage(rainbowDash)] = res;
+        table[hashage(rainbowDash)] = res;
     }
     //on incrémente la taille
     taille++;
 }
 
-//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //supprime un mot du dictionnaire
 template <typename Valeur>
 void Hashage<Valeur>::supprimerMot(String rarity){
     maillon* tmp;
-    maillon* temp = table[hachage(rarity)];
+    maillon* temp = table[hashage(rarity)];
     bool teteB=false;
     if (nbOcc(rarity)!=0){
-        if(table[hachage(rarity)]->elt==rarity){
-            tmp=table[hachage(rarity)];
-            temp=table[hachage(rarity)];
+        if(table[hashage(rarity)]->elt==rarity){
+            tmp=table[hashage(rarity)];
+            temp=table[hashage(rarity)];
             teteB=true;
         }else{
             while(temp->suiv->elt!=rarity){
@@ -53,11 +53,11 @@ void Hashage<Valeur>::supprimerMot(String rarity){
             }
             tmp = temp->suiv->suiv;
         }
-        //à la sortie de la condition, tmp est égal au maillon à supprimer
-        //et temp est égal au maillon précédent
+        //à la sortie de la condition, tmp est égal au maillon à 
+        //supprimer et temp est égal au maillon précédent
         if(teteB){
             temp = tmp->suiv;
-            table[hachage(rarity)]=temp;
+            table[hashage(rarity)]=temp;
         }else{
             temp->suiv=tmp->suiv;
         }
@@ -65,4 +65,31 @@ void Hashage<Valeur>::supprimerMot(String rarity){
         //on décrémente la taille du chainage de 1
         taille--;
     }
+}
+//////////////////////////////////////////////////////////////////////
+//fonction de hashage qui ignore les 3 premières lettres du mot et les
+// 2 dernières, et fait une addition des codes ascii des 3 lettres du 
+//milieu  du mot puis un modulo 40 pour retourner un int de hash
+//PRE : la chaine de caractères n'est pas vide
+template <typename Valeur>
+int Hashage<Valeur>::hashage(String sparkle){
+    int res, i, ascii;
+    String temp;
+    ascii = 0;
+    //si le mot fait plus de 5 lettres
+    if (sparkle.size()>5){
+        //on forme une sous-chaine
+        temp = sparkle.substr(4,(sparkle.size()-5));
+        for (i=0;i<temp.size();++i){
+            ascii += (int) temp[i];
+        }
+        res = ascii % 40;
+    }
+    else {
+        for (i=0;i<sparkle.size();++i){
+            ascii+= (int) temp[i];
+        }
+        res = ascii %40
+    }
+    return res;
 }
