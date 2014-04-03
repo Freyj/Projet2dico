@@ -110,7 +110,7 @@ void Hashage<Valeur>::associerMot(String mot, Valeur v){
 //renvoie la valeur associée au mot demandé
 //PRE : le mot existe dans le dictionnaire
 template <typename Valeur>
- Valeur Hashage<Valeur>::valeurAssociée(String mot){
+ Valeur Hashage<Valeur>::valeurAssociee(String mot){
     int index_mot = hashage(mot);
     int i = 0;
     maillon* temp = table[index_mot].tete;
