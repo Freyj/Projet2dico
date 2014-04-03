@@ -92,8 +92,8 @@ void Hashage<Valeur>::associerMot(String mot, Valeur v){
     if (contientMot(mot)){
         int index_mot = hashage(mot);
         int i = 0;
-        maillon* temp table[index_mot].tete;
-        while(temp->val!=mot && i<table[index_mot].taille){
+        maillon* temp = table[index_mot].tete;
+        while(temp->mot!=mot && i<table[index_mot].taille){
             i++;
             temp = temp->suiv;
         }
@@ -111,7 +111,14 @@ void Hashage<Valeur>::associerMot(String mot, Valeur v){
 //PRE : le mot existe dans le dictionnaire
 template <typename Valeur>
  Valeur Hashage<Valeur>::valeurAssociée(String mot){
-
+    int index_mot = hashage(mot);
+    int i = 0;
+    maillon* temp = table[index_mot].tete;
+    while(temp->mot!=mot && i<table[index_mot].taille){
+        i++;
+        temp = temp->suiv;
+    }
+    return temp->val;
  }
 
 //////////////////////////////////////////////////////////////////////
