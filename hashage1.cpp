@@ -71,6 +71,18 @@ void Hashage<Valeur>::supprimerMot(String rarity){
 template <typename Valeur>
 bool Hashage<Valeur>::contientMot(String mot){
     if (taille!=0){
+        int index_mot = hashage(mot);
+        int i;
+        maillon* temp = table[index_mot].tete;
+        while(temp->val!=mot && i<table[index_mot].taille){
+            i++;
+        }
+        if (i<taille-1){
+            return true;
+        }
+        else{
+            return false;
+        }
 
     }
     else return false;
