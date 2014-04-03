@@ -16,7 +16,10 @@ class Hashage{
         _maillon * suiv ;
     }maillon;
 
-    int taille;
+    typedef struct chainageTab{
+        int taille;
+        maillon * tete;
+    };
 
     maillon *table[40];
     
