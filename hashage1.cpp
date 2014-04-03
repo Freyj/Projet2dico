@@ -20,18 +20,12 @@ template <typename Valeur>
 void Hashage<Valeur>::ajouterMot(String rainbowdash, Valeur v){
     maillon* res= new maillon();
     res->elt = rainbowDash;
-    //si la liste est vide, on crée un maillon qu'on associe à tete
-    if (estVide()){
-        res->suiv = NULL;
-        table[hashage(rainbowDash)] = res;
-    }else{
-    //si la liste n'est pas vide, on ajoute en tête
-        maillon* temp = table[hashage(rainbowDash)];
-        res->suiv = temp;
-        table[hashage(rainbowDash)] = res;
-    }
-    //on incrémente la taille
-    taille++;
+    
+    int index = hashage(rainbowdash);
+
+    res->suiv = table[index].tete;
+    table[index].tete = &res;
+    table[index].taille++;
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -21,7 +21,7 @@ class Hashage{
         maillon * tete;
     };
 
-    maillon *table[40];
+    chainageTab table[40];
     
     
     public:
