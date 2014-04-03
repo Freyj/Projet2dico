@@ -4,8 +4,9 @@ using namespace std;
 //Constructeur
 template <typename Valeur>
 Hashage<Valeur>::Hashage(){
-    taille = 0;
-    table[29] = {0};
+    for(int i = 0; i<40; i++){
+        table[i].taille=0;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -20,6 +21,7 @@ template <typename Valeur>
 void Hashage<Valeur>::ajouterMot(String rainbowdash, Valeur v){
     maillon* res= new maillon();
     res->elt = rainbowDash;
+    res->val = v;
     
     int index = hashage(rainbowdash);
 
@@ -33,31 +35,31 @@ void Hashage<Valeur>::ajouterMot(String rainbowdash, Valeur v){
 template <typename Valeur>
 void Hashage<Valeur>::supprimerMot(String rarity){
     maillon* tmp;
-    maillon* temp = table[hashage(rarity)];
+    int index = hashage(rarity)
+    maillon* temp = table[index]->tete;
     bool teteB=false;
-    if (nbOcc(rarity)!=0){
-        if(table[hashage(rarity)]->elt==rarity){
-            tmp=table[hashage(rarity)];
-            temp=table[hashage(rarity)];
-            teteB=true;
-        }else{
-            while(temp->suiv->elt!=rarity){
-                temp = temp->suiv;
-            }
-            tmp = temp->suiv->suiv;
+
+    if(table[i]->tete->elt==rarity){
+        tmp=table[index];
+        temp=table[index];
+        teteB=true;
+    }else{
+        while(temp->suiv->elt!=rarity){
+            temp = temp->suiv;
         }
-        //à la sortie de la condition, tmp est égal au maillon à 
-        //supprimer et temp est égal au maillon précédent
-        if(teteB){
-            temp = tmp->suiv;
-            table[hashage(rarity)]=temp;
-        }else{
-            temp->suiv=tmp->suiv;
-        }
-        delete tmp;
-        //on décrémente la taille du chainage de 1
-        taille--;
+        tmp = temp->suiv->suiv;
     }
+    //à la sortie de la condition, tmp est égal au maillon à 
+    //supprimer et temp est égal au maillon précédent
+    if(teteB){
+        temp = tmp->suiv;
+        table[hashage(rarity)]=temp;
+    }else{
+        temp->suiv=tmp->suiv;
+    }
+    delete tmp;
+    //on décrémente la taille du chainage de 1
+    taille--;
 }
 
 //////////////////////////////////////////////////////////////////////
