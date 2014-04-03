@@ -42,7 +42,7 @@ class Hashage{
     void supprimerMot(String mot);
     // supprime l'éventuelle chaîne mot du dictionnaire
     
-    Valeur valeurAssociée(String mot);
+    Valeur valeurAssociee(String mot);
     // donne la valeur correspondant à la chaîne mot
     // (supposée figurer dans le dictionnaire)
     
