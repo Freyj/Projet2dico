@@ -5,7 +5,7 @@ using namespace std;
 template <typename Valeur>
 Hashage<Valeur>::Hashage(){
     taille = 0;
-    table[29] = {0};
+    table[39] = {0};
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -66,10 +66,11 @@ template <typename Valeur>
 bool Hashage<Valeur>::contientMot(String mot){
     if (taille!=0){
         int index_mot = hashage(mot);
-        int i;
+        int i=0;
         maillon* temp = table[index_mot].tete;
         while(temp->val!=mot && i<table[index_mot].taille){
             i++;
+            temp = temp->suiv;
         }
         if (i<taille-1){
             return true;
@@ -89,7 +90,14 @@ template <typename Valeur>
 void Hashage<Valeur>::associerMot(String mot, Valeur v){
     //si le mot est présent, on change la valeur associée (unicité)
     if (contientMot(mot)){
-
+        int index_mot = hashage(mot);
+        int i = 0;
+        maillon* temp table[index_mot].tete;
+        while(temp->val!=mot && i<table[index_mot].taille){
+            i++;
+            temp = temp->suiv;
+        }
+        temp->val = v;
     }
     //si le mot est absent, on l'ajoute au dictionnaire
     else {
