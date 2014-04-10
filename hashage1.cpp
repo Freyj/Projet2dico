@@ -140,6 +140,7 @@ int Hashage<Valeur>::hashage(String sparkle){
         }
         res = ascii % 40;
     }
+    //sinon
     else {
         for (i=0;i<sparkle.size();++i){
             ascii+= (int) temp[i];
