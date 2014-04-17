@@ -47,3 +47,17 @@ template <typename Valeur>
 Valeur Dictionnaire<Valeur>::valeurAssociee(String mot);
     // donne la valeur correspondant à la chaîne mot
     // (supposée figurer dans le dictionnaire)
+
+template <typename Valeur>
+int Dictionnaire<Valeur>::indexAlpha(String sparkle){
+	int aMaj = 'A';
+	int aMin = 'a';
+	int first = sparkle[0];
+
+	if(first <=90){
+		return first - aMaj;
+	}else{
+		return first - aMin;
+	}
+
+}

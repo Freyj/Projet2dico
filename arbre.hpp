@@ -10,12 +10,10 @@ class Dictionnaire{
     
     private:
         typedef struct _feuille{
-            char etiq;
-            bool fin_mot;
             vector<_feuille> lettres;
         }feuille;
 
-        int alpha[26]; 
+        feuille alpha[26]; 
     
     
     public:
