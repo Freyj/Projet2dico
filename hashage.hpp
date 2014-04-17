@@ -6,7 +6,7 @@ template <typename Valeur>
 /*
 *Classe gérant le dictionnaire via une table de hashage
 */
-class Hashage{
+class Dictionnaire{
     
     private:
         typedef struct _maillon {
@@ -22,8 +22,8 @@ class Hashage{
     
     
     public:
-        Hashage();
-        ~Hashage();
+        Dictionnaire();
+        ~Dictionnaire();
     
         bool contientMot(String mot);
         // vrai ssi la chaîne mot figure dans le dictionnaire

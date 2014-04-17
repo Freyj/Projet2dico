@@ -3,7 +3,7 @@ using namespace std;
 //////////////////////////////////////////////////////////////////////
 //Constructeur
 template <typename Valeur>
-Hashage<Valeur>::Hashage(){
+Dictionnaire<Valeur>::Dictionnaire(){
     taille = 0;
     table[39] = {0};
 }
@@ -11,13 +11,13 @@ Hashage<Valeur>::Hashage(){
 //////////////////////////////////////////////////////////////////////
 //destructeur
 template <typename Valeur>
-Hashage<Valeur>::~Hashage(){
+Dictionnaire<Valeur>::~Dictionnaire(){
 }
 
 //////////////////////////////////////////////////////////////////////
 //ajoute un mot au dictionnaire
 template <typename Valeur>
-void Hashage<Valeur>::ajouterMot(String rainbowdash, Valeur v){
+void Dictionnaire<Valeur>::ajouterMot(String rainbowdash, Valeur v){
     maillon* res= new maillon();
     res->elt = rainbowDash;
     
@@ -31,7 +31,7 @@ void Hashage<Valeur>::ajouterMot(String rainbowdash, Valeur v){
 //////////////////////////////////////////////////////////////////////
 //supprime un mot du dictionnaire
 template <typename Valeur>
-void Hashage<Valeur>::supprimerMot(String rarity){
+void Dictionnaire<Valeur>::supprimerMot(String rarity){
     maillon* tmp;
     maillon* temp = table[hashage(rarity)];
     bool teteB=false;
@@ -63,7 +63,7 @@ void Hashage<Valeur>::supprimerMot(String rarity){
 //////////////////////////////////////////////////////////////////////
 //vérifie si le dictionnaire contient le mot
 template <typename Valeur>
-bool Hashage<Valeur>::contientMot(String mot){
+bool Dictionnaire<Valeur>::contientMot(String mot){
     if (taille!=0){
         int index_mot = hashage(mot);
         int i=0;
@@ -87,7 +87,7 @@ bool Hashage<Valeur>::contientMot(String mot){
 //associe une valeur au mot qui peut être soit présent, soit absent du
 //dictionnaire
 template <typename Valeur>
-void Hashage<Valeur>::associerMot(String mot, Valeur v){
+void Dictionnaire<Valeur>::associerMot(String mot, Valeur v){
     //si le mot est présent, on change la valeur associée (unicité)
     if (contientMot(mot)){
         int index_mot = hashage(mot);
@@ -110,7 +110,7 @@ void Hashage<Valeur>::associerMot(String mot, Valeur v){
 //renvoie la valeur associée au mot demandé
 //PRE : le mot existe dans le dictionnaire
 template <typename Valeur>
- Valeur Hashage<Valeur>::valeurAssociee(String mot){
+ Valeur Dictionnaire<Valeur>::valeurAssociee(String mot){
     int index_mot = hashage(mot);
     int i = 0;
     maillon* temp = table[index_mot].tete;
@@ -127,7 +127,7 @@ template <typename Valeur>
 //milieu  du mot puis un modulo 40 pour retourner un int de hash
 //PRE : la chaine de caractères n'est pas vide
 template <typename Valeur>
-int Hashage<Valeur>::hashage(String sparkle){
+int Dictionnaire<Valeur>::hashage(String sparkle){
     int res, i, ascii;
     String temp;
     ascii = 0;

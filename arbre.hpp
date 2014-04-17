@@ -6,7 +6,7 @@ template <typename Valeur>
 /*
 *Classe permettant l'implémentation du dictionnaire par un arbre
 */
-class Arbre{
+class Dictionnaire{
     
     private:
         typedef struct _feuille{
@@ -19,8 +19,8 @@ class Arbre{
     
     
     public:
-        Arbre();
-        ~Arbre();
+        Dictionnaire();
+        ~Dictionnaire();
         bool contientMot(String mot);
         // vrai ssi la chaîne mot figure dans le dictionnaire
         void ajouterMot(String mot, Valeur v);
