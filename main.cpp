@@ -3,6 +3,7 @@
  **/
  
 #include "hashage.hpp" 
+//#include "arbre.hpp"
  
 template class Valeur;
 using namespace std;
