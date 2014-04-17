@@ -14,10 +14,12 @@ class Dictionnaire{
             Valeur val;
             _maillon * suiv ;
         }maillon;
+        
         typedef struct chainageTab{
             int taille;
             maillon * tete;
         };
+
         chainageTab table[40];
     
     

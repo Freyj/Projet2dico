@@ -12,10 +12,10 @@ class Dictionnaire{
         typedef struct _feuille{
             char etiq;
             bool fin_mot;
-
+            vector<_feuille> lettres;
         }feuille;
 
-    
+        int alpha[26]; 
     
     
     public:
@@ -34,6 +34,7 @@ class Dictionnaire{
         Valeur valeurAssociée(String mot);
         // donne la valeur correspondant à la chaîne mot
         // (supposée figurer dans le dictionnaire)
+        int indexAlpha(String sparkle);
     
     
 };
