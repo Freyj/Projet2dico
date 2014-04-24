@@ -15,26 +15,26 @@ class Dictionnaire{
         }feuille;
 
         feuille alpha[26];
-        recursivContient(feuille feui, string mot, int rang);
+        recursivContient(feuille feui, std::string mot, int rang);
 
 
     public:
         Dictionnaire();
         ~Dictionnaire();
-        bool contientMot(String mot);
+        bool contientMot(std::string mot);
         // vrai ssi la chaîne mot figure dans le dictionnaire
-        void ajouterMot(String mot, Valeur v);
+        void ajouterMot(std::string mot, Valeur v);
         // ajoute la chaîne mot au dictionnaire, avec la valeur v,
         // mot étant supposé absent du dictionnaire
-        void associerMot(String mot, Valeur v);
+        void associerMot(std::string mot, Valeur v);
         // associe la valeur v à la chaîne mot dans le dictionnaire,
         // mot pouvant être présent ou absent du dictionnaire
-        void supprimerMot(String mot);
+        void supprimerMot(std::string mot);
         // supprime l'éventuelle chaîne mot du dictionnaire
-        Valeur valeurAssociée(String mot);
+        Valeur valeurAssociée(std::string mot);
         // donne la valeur correspondant à la chaîne mot
         // (supposée figurer dans le dictionnaire)
-        int indexAlpha(String sparkle);
+        int indexAlpha(std::string sparkle);
 
 
 };
