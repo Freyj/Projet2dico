@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="arbre.cpp" />
+		<Unit filename="arbre.hpp" />
+		<Unit filename="hashage.hpp" />
+		<Unit filename="hashage1.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
