@@ -43,10 +43,53 @@ bool Dictionnaire<Valeur>::recursivContient(feuille feui, std::string mot, int r
 //////////////////////////////////////////////////////////////////////
 //ajoute un mot au dictionnaire
 template <typename Valeur>
-void Dictionnaire<Valeur>::ajouterMot(std::string mot, Valeur v);
+void Dictionnaire<Valeur>::ajouterMot(std::string mot, Valeur v){
+    int indexTab = indexAlpha(mot);
+    bool trouv = false;
+    for(int i= 0; i<alpha[indexTab].size(); i++){
+        if(mot.at(1)==feui.suiv[i].lettre){
+            trouv = true;
+            recursivTrouvAjout(feui.suiv[i], mot, 1)
+        }
+    }
+    if(!trouv){
+        feuille* nouv = new feuille();
+        nouv.lettr=mot.at(1);
+        feui.suiv.push_back(nouv);
+        recursivAjout(nouv, mot, 1);
+    }
+}
    	// ajoute la chaîne mot au dictionnaire, avec la valeur v,
    	// mot étant supposé absent du dictionnaire
 
+
+recursivTrouvAjout(feuille feui, std::string mot, int rang){
+    bool trouv = false;
+    for(int i= 0; i<feui.suiv.size(); i++){
+        if(mot.at(rang+1)==feui.suiv[i].lettre){
+            trouv = true;
+            recursivTrouvAjout(feui.suiv[i], mot, rang+1)
+        }
+    }
+
+    if(!trouv){
+        feuille* nouv = new feuille();
+        nouv.lettr = mot.at(rang+1);
+        feui.suiv.push_back(nouv);
+        if(mot.size()!=rang){
+            recursivAjout(nouv, mot, rang+1);
+        }
+    }
+}
+
+recursivAjout(feuille feui, mot, int rang){
+    feuille* nouv = new feuille();
+    nouv.lettr = mot.at(rang+1);
+    feui.suiv.push_back(nouv);
+    if(mot.size()!=rang){
+        recursivAjout(nouv, mot, rang+1);
+    }
+}
 //////////////////////////////////////////////////////////////////////
 //associe une valeur au mot qui peut être soit présent, soit absent du
 //dictionnaire
@@ -80,5 +123,4 @@ int Dictionnaire<Valeur>::indexAlpha(std::string sparkle){
 	}else{
 		return first - aMin;
 	}
-
 }
