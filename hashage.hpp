@@ -1,10 +1,10 @@
 #ifndef HASHAGE_H
 #define HASHAGE_H
 
-int const NULL=0;
-template <typename Valeur>
+const int NULL=0;
+template <typename Valeur = int>
 /*
-*Classe gÃ©rant le dictionnaire via une table de hashage
+*Classe gérant le dictionnaire via une table de hashage
 */
 class Dictionnaire{
     private:
@@ -14,10 +14,10 @@ class Dictionnaire{
             _maillon* suiv ;
         }maillon;
 
-        typedef struct chainageTab{
+        typedef struct _chainageTab{
             int taille;
             maillon* tete;
-        };
+        }chainageTab;
 
         chainageTab table[40];
 
@@ -27,22 +27,22 @@ class Dictionnaire{
         ~Dictionnaire();
 
         bool contientMot(std::string mot);
-        // vrai ssi la chaÃ®ne mot figure dans le dictionnaire
+        // vrai ssi la chaîne mot figure dans le dictionnaire
 
         void ajouterMot(std::string mot, Valeur v);
-        // ajoute la chaÃ®ne mot au dictionnaire, avec la valeur v,
-        // mot Ã©tant supposÃ© absent du dictionnaire
+        // ajoute la chaîne mot au dictionnaire, avec la valeur v,
+        // mot étant supposé absent du dictionnaire
 
         void associerMot(std::string mot, Valeur v);
-        // associe la valeur v Ã  la chaÃ®ne mot dans le dictionnaire,
-        // mot pouvant Ãªtre prÃ©sent ou absent du dictionnaire
+        // associe la valeur v à la chaîne mot dans le dictionnaire,
+        // mot pouvant être présent ou absent du dictionnaire
 
         void supprimerMot(std::string mot);
-        // supprime l'Ã©ventuelle chaÃ®ne mot du dictionnaire
+        // supprime l'éventuelle chaîne mot du dictionnaire
 
         Valeur valeurAssociee(std::string mot);
-        // donne la valeur correspondant Ã  la chaÃ®ne mot
-        // (supposÃ©e figurer dans le dictionnaire)
+        // donne la valeur correspondant à la chaîne mot
+        // (supposée figurer dans le dictionnaire)
 
         int hashage(std::string sparkle);
 };
