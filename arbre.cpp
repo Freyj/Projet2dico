@@ -16,16 +16,39 @@ Dictionnaire<Valeur>::~Dictionnaire(){
 //////////////////////////////////////////////////////////////////////
 //vérifie si le dictionnaire contient le mot
 template <typename Valeur>
-bool Dictionnaire<Valeur>::contientMot(String mot);
+bool Dictionnaire<Valeur>::contientMot(String mot){
+    int indexTab = indexAlpha(mot);
+    bool ret = false;
+    for(int i= 0; i<alpha[indexTab].size(); i++){
+        if(mot.at(1)==alpha[indexTab].suiv[i].lettre){
+            ret = recursivContient(alpha[indexTab].suiv[i], mot, 1);
+        }
+    }
+    return ret;
+}
 // vrai ssi la chaîne mot figure dans le dictionnaire
-    
+
+template <typename Valeur>
+bool Dictionnaire<Valeur>::recursivContient(feuille feui, string mot, int rang){
+    for(int i= 0; i<feui.suiv.size(); i++){
+        if(mot.at(rang+1)==feui.suiv[i].lettre){
+            if(rang+1==mot.size()){
+                return true;
+            }else{
+                return recursivContient(feui.suiv[i], mot, rang+1)
+            }
+        }
+    }
+    return false;
+}
+
 //////////////////////////////////////////////////////////////////////
 //ajoute un mot au dictionnaire
 template <typename Valeur>
 void Dictionnaire<Valeur>::ajouterMot(String mot, Valeur v);
    	// ajoute la chaîne mot au dictionnaire, avec la valeur v,
    	// mot étant supposé absent du dictionnaire
-  
+
 //////////////////////////////////////////////////////////////////////
 //associe une valeur au mot qui peut être soit présent, soit absent du
 //dictionnaire
@@ -33,7 +56,7 @@ template <typename Valeur>
 void Dictionnaire<Valeur>::associerMot(String mot, Valeur v);
     // associe la valeur v à la chaîne mot dans le dictionnaire,
     // mot pouvant être présent ou absent du dictionnaire
-    
+
 //////////////////////////////////////////////////////////////////////
 //supprime un mot du dictionnaire
 template <typename Valeur>

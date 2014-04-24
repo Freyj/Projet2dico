@@ -7,15 +7,17 @@ template <typename Valeur>
 *Classe permettant l'implémentation du dictionnaire par un arbre
 */
 class Dictionnaire{
-    
+
     private:
         typedef struct _feuille{
-            vector<_feuille> lettres;
+            vector<_feuille> suiv;
+            char lettre;
         }feuille;
 
-        feuille alpha[26]; 
-    
-    
+        feuille alpha[26];
+        recursivContient(feuille feui, string mot, int rang);
+
+
     public:
         Dictionnaire();
         ~Dictionnaire();
@@ -33,8 +35,8 @@ class Dictionnaire{
         // donne la valeur correspondant à la chaîne mot
         // (supposée figurer dans le dictionnaire)
         int indexAlpha(String sparkle);
-    
-    
+
+
 };
 #include <iostream>
-#endif 
+#endif
