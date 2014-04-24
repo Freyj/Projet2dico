@@ -2,8 +2,8 @@
  * main.cpp
  **/
 #include <string>
-#include "hashage.hpp"
-//#include "arbre.hpp"
+//#include "hashage.hpp"
+#include "arbre.hpp"
 
 
 int main(){

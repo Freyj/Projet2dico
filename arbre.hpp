@@ -1,39 +1,39 @@
 #ifndef ARBRE_H
 #define ARBRE_H
 
-int const NULL=0;
+#include <vector>
 template <typename Valeur>
 /*
-*Classe permettant l'implÃ©mentation du dictionnaire par un arbre
+*Classe permettant l'implémentation du dictionnaire par un arbre
 */
 class Dictionnaire{
 
     private:
         typedef struct _feuille{
-            vector<_feuille> suiv;
+            std::vector<_feuille> suiv;
             char lettre;
         }feuille;
 
         feuille alpha[26];
-        recursivContient(feuille feui, std::string mot, int rang);
+        bool recursivContient(feuille feui, std::string mot, int rang);
 
 
     public:
         Dictionnaire();
         ~Dictionnaire();
         bool contientMot(std::string mot);
-        // vrai ssi la chaÃ®ne mot figure dans le dictionnaire
+        // vrai ssi la chaîne mot figure dans le dictionnaire
         void ajouterMot(std::string mot, Valeur v);
-        // ajoute la chaÃ®ne mot au dictionnaire, avec la valeur v,
-        // mot Ã©tant supposÃ© absent du dictionnaire
+        // ajoute la chaîne mot au dictionnaire, avec la valeur v,
+        // mot étant supposé absent du dictionnaire
         void associerMot(std::string mot, Valeur v);
-        // associe la valeur v Ã  la chaÃ®ne mot dans le dictionnaire,
-        // mot pouvant Ãªtre prÃ©sent ou absent du dictionnaire
+        // associe la valeur v à la chaîne mot dans le dictionnaire,
+        // mot pouvant être présent ou absent du dictionnaire
         void supprimerMot(std::string mot);
-        // supprime l'Ã©ventuelle chaÃ®ne mot du dictionnaire
-        Valeur valeurAssociÃ©e(std::string mot);
-        // donne la valeur correspondant Ã  la chaÃ®ne mot
-        // (supposÃ©e figurer dans le dictionnaire)
+        // supprime l'éventuelle chaîne mot du dictionnaire
+        Valeur valeurAssociee(std::string mot);
+        // donne la valeur correspondant à la chaîne mot
+        // (supposée figurer dans le dictionnaire)
         int indexAlpha(std::string sparkle);
 
 

@@ -46,8 +46,8 @@ void Dictionnaire<Valeur>::supprimerMot(std::string rarity){
         }
         tmp = temp->suiv->suiv;
     }
-    //Ã  la sortie de la condition, tmp est Ã©gal au maillon Ã 
-    //supprimer et temp est Ã©gal au maillon prÃ©cÃ©dent
+    //à la sortie de la condition, tmp est égal au maillon à
+    //supprimer et temp est égal au maillon précédent
     if(teteB){
         temp = tmp->suiv;
         table[hashage(rarity)]=temp;
@@ -55,12 +55,12 @@ void Dictionnaire<Valeur>::supprimerMot(std::string rarity){
         temp->suiv=tmp->suiv;
     }
     delete tmp;
-    //on dÃ©crÃ©mente la taille du chainage de 1
+    //on décrémente la taille du chainage de 1
     taille--;
 }
 
 //////////////////////////////////////////////////////////////////////
-//vÃ©rifie si le dictionnaire contient le mot
+//vérifie si le dictionnaire contient le mot
 template <typename Valeur>
 bool Dictionnaire<Valeur>::contientMot(std::string mot){
     if (taille!=0){
@@ -83,11 +83,11 @@ bool Dictionnaire<Valeur>::contientMot(std::string mot){
 }
 
 //////////////////////////////////////////////////////////////////////
-//associe une valeur au mot qui peut Ãªtre soit prÃ©sent, soit absent du
+//associe une valeur au mot qui peut être soit présent, soit absent du
 //dictionnaire
 template <typename Valeur>
 void Dictionnaire<Valeur>::associerMot(std::string mot, Valeur v){
-    //si le mot est prÃ©sent, on change la valeur associÃ©e (unicitÃ©)
+    //si le mot est présent, on change la valeur associée (unicité)
     if (contientMot(mot)){
         int index_mot = hashage(mot);
         int i = 0;
@@ -106,7 +106,7 @@ void Dictionnaire<Valeur>::associerMot(std::string mot, Valeur v){
 }
 
 //////////////////////////////////////////////////////////////////////
-//renvoie la valeur associÃ©e au mot demandÃ©
+//renvoie la valeur associée au mot demandé
 //PRE : le mot existe dans le dictionnaire
 template <typename Valeur>
  Valeur Dictionnaire<Valeur>::valeurAssociee(std::string mot){
@@ -121,10 +121,10 @@ template <typename Valeur>
  }
 
 //////////////////////////////////////////////////////////////////////
-//fonction de hashage qui ignore les 3 premiÃ¨res lettres du mot et les
-// 2 derniÃ¨res, et fait une addition des codes ascii des 3 lettres du
+//fonction de hashage qui ignore les 3 premières lettres du mot et les
+// 2 dernières, et fait une addition des codes ascii des 3 lettres du
 //milieu  du mot puis un modulo 40 pour retourner un int de hash
-//PRE : la chaine de caractÃ¨res n'est pas vide
+//PRE : la chaine de caractères n'est pas vide
 template <typename Valeur>
 int Dictionnaire<Valeur>::hashage(std::string sparkle){
     int res, i, ascii;
@@ -139,7 +139,8 @@ int Dictionnaire<Valeur>::hashage(std::string sparkle){
         }
         res = ascii % 40;
     }
-    //sinon
+    //sinon si le mot fait 5 lettres ou moins, on calcule la somme des
+    //codes ascii des caractères pour déterminer le hashage
     else {
         for (i=0;i<sparkle.size();++i){
             ascii+= (int) temp[i];

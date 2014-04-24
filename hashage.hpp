@@ -1,7 +1,6 @@
 #ifndef HASHAGE_H
 #define HASHAGE_H
 
-const int NULL=0;
 template <typename Valeur = int>
 /*
 *Classe gérant le dictionnaire via une table de hashage
